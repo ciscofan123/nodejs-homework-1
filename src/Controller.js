@@ -6,9 +6,14 @@ class Controller {
 
   constructor(Database) {
     this.db = Database;
+    this.postUpload = this.postUpload.bind(this);
+    this.getList = this.getList.bind(this);
+    this.getImage = this.getImage.bind(this);
+    this.deleteImage = this.deleteImage.bind(this);
+    this.getMerge = this.getMerge.bind(this);
   }
 
-  async postUpload(req, res) {
+  async postUpload (req, res) {
     if (!req.file) {
       res.statusCode = 400;
       res.end('Invalid request');
