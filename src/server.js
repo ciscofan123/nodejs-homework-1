@@ -12,11 +12,15 @@ const app = express();
 
 
 //routes
-app.post('/upload', fileMiddleware.single('file'), controller.postUpload);
+app.post('/upload', fileMiddleware.single('image'), controller.postUpload);
 app.get('/list', controller.getList);
 app.get('/image/:id', controller.getImage);
 app.delete('/image/:id', controller.deleteImage);
 app.get('/merge', controller.getMerge);
+
+app.use(function (err, req, res, next) {
+  res.status(500).send(err.message);
+})
 
 
 app.listen(config.port, () => {
