@@ -3,12 +3,14 @@ const fs = require('fs');
 class Database {
 
   constructor(pathToDump) {
+    this.restoreDump = this.restoreDump.bind(this);
+    this.dump = this.dump.bind(this);
     this.dumpPath = pathToDump;
     this.rows = {};
     this.restoreDump();
   }
 
-  restoreDump() {
+  async restoreDump() {
     fs.promises
       .readFile(this.dumpPath)
       .then((file) => {
@@ -25,7 +27,7 @@ class Database {
       .catch(console.warn);
   }
 
-  dump() {
+  async dump() {
     fs.promises
       .writeFile(this.dumpPath, JSON.stringify(this.rows))
       .catch(console.warn);
