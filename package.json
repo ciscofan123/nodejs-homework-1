@@ -1,0 +1,24 @@
+{
+  "name": "y-homework-1",
+  "version": "1.0.0",
+  "description": "Nodejs homework",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/server"
+  },
+  "author": "Alexandr Krylov",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^7.26.0",
+    "lint-staged": "^11.0.0"
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix"
+  },
+  "dependencies": {
+    "backrem": "^1.1.0",
+    "express": "^4.17.1",
+    "multer": "^1.4.3",
+    "request": "^2.88.2"
+  }
+}
