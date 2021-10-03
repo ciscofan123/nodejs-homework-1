@@ -13,14 +13,14 @@ class Controller {
     this.getMerge = this.getMerge.bind(this);
   }
 
-  async postUpload (req, res) {
+  async postUpload(req, res) {
     if (!req.file) {
       res.statusCode = 400;
       res.end('Invalid request');
     }
     req.file.id = req.file.filename;
     this.db.add(req.file);
-    res.end(req.file.id);
+    res.end(JSON.stringify({id: req.file.id}));
   }
 
   async getList(req, res) {
